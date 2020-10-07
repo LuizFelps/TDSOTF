@@ -1,38 +1,67 @@
-.App {
+html {
+  padding: 0;
+  margin: 0;
+  background-color: #ddd;
+  box-sizing: border-box;
+}
+
+h1.title {
+  color: #000;
+  font-size: 14px;
   text-align: center;
+  text-transform: uppercase;
+  margin: 20px 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+div.countries {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+div.countries div.country {
+  flex: 1 1 calc(20% - 6px);
+  height: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: calc(5.5% - 6px) 0;
+  border-radius: 3px;
+  margin: 2px;
+  position: relative;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+div.countries div.country div.country-name {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  transition: .3s;
+  top: 0;
+  position: absolute;
 }
 
-.App-link {
-  color: #61dafb;
+div.countries div.country div.country-name span {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  transition: .6s;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+div.countries div.country div.country-name span.sub {
+  font-size: 10px;
+}
+
+div.countries div.country:hover div.country-name {
+  background-color: rgba(0, 0, 0, .85);
+}
+
+div.countries div.country:hover div.country-name span {
+  visibility: visible;
+  opacity: 1;
 }

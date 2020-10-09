@@ -20,7 +20,7 @@ div.countries {
 }
 
 div.countries div.country {
-  flex: 1 1 calc(20% - 6px);
+  flex: 0 1 calc(20% - 6px);
   height: 0;
   background-position: center;
   background-size: cover;
@@ -34,6 +34,7 @@ div.countries div.country {
 div.countries div.country div.country-name {
   width: 100%;
   height: 100%;
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,4 +65,105 @@ div.countries div.country:hover div.country-name {
 div.countries div.country:hover div.country-name span {
   visibility: visible;
   opacity: 1;
+}
+
+div.countries div.country div.country-info {
+  width: calc(300% + 8px);
+  height: calc(200% + 4px);
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  color: #fff;
+  background-color: #000;
+  border-radius: 3px;
+  position: absolute;
+  top: calc(100% + 4px);
+  display: none;
+  flex-direction: column;
+  z-index: 2;
+}
+
+div.countries div.country div.country-info h2.name {
+  font-size: 14px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+div.countries div.country div.country-info div.content {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+div.countries div.country div.country-info div.content div.section {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 50%;
+  padding: 5px;
+}
+
+div.countries div.country div.country-info div.content div.section ul {
+  font-size: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+div.countries div.country div.country-info div.content div.section:first-child {
+  border-width: 0 1px 0 0;
+  border-style: solid;
+  border-color: #fff;
+}
+
+
+div.countries div.country:nth-child(5n-1) div.country-info,
+div.countries div.country:nth-child(5n) div.country-info {
+  left: calc(-200% - 8px);
+}
+
+div.countries div.country:active div.country-info {
+  display: flex;
+}
+
+@media screen and (max-width: 1280px) {
+  div.countries div.country {
+    flex: 0 1 calc(25% - 6px);
+    padding: calc(6.5% - 6px) 0;
+  }
+
+  div.countries div.country:nth-child(5n-1) div.country-info,
+  div.countries div.country:nth-child(5n) div.country-info {
+    left: 0;
+  }
+
+  div.countries div.country:nth-child(4n-1) div.country-info,
+  div.countries div.country:nth-child(4n) div.country-info {
+    left: calc(-200% - 8px);
+  }
+}
+
+@media screen and (max-width: 980px) {
+  div.countries div.country {
+    flex: 0 1 calc(33.3% - 6px);
+    padding: calc(8.5% - 6px) 0;
+  }
+
+  div.countries div.country:nth-child(5n-1) div.country-info,
+  div.countries div.country:nth-child(5n) div.country-info {
+    left: 0;
+  }
+
+  div.countries div.country:nth-child(4n-1) div.country-info,
+  div.countries div.country:nth-child(4n) div.country-info {
+    left: 0;
+  }
+
+  div.countries div.country:nth-child(3n-1) div.country-info {
+    left: calc(-100% - 4px);
+  }
+
+  div.countries div.country:nth-child(3n) div.country-info {
+    left: calc(-200% - 8px)
+  }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Country from './Country';
 
 class CountryList extends React.Component {
     
@@ -10,21 +11,19 @@ class CountryList extends React.Component {
     componentDidMount() {
         axios.get('https://restcountries.eu/rest/v2/all').then(res => {
             const countries = res.data;
-            this.setState({ countries });
+            this.setState({countries});
         })
     }
 
+
     render() {
+        var c = [];
+        this.state.countries.map((country) => {
+            return c.push({code: country.alpha3Code, name: country.name})
+        });
         return (
             <div className="countries">
-                { this.state.countries.map(country =>
-                <div className="country" style={{backgroundImage: 'url(' + country.flag + ')'}}>
-                    <div className="country-name">
-                        <span>{ country.translations.br }</span>
-                        <span className="sub">( { country.nativeName } )</span>
-                    </div>
-                </div>
-                )}
+                { this.state.countries.map(country => <Country key={country.name} country={country} countries={c} />) }
             </div>
         )
     }

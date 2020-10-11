@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="title">Países do Mundo</h1>
+      <h1 className="title">World's Countries</h1>
       <CountryList />
     </div>
   );

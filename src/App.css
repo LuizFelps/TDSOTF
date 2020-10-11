@@ -1,39 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
 html {
   padding: 0;
   margin: 0;
   background-color: #ddd;
-  box-sizing: border-box;
 }
 
 h1.title {
-  color: #000;
-  font-size: 14px;
+  font-family: 'Rancho', cursive;
+  font-weight: normal;
+  color: #fff;
+  font-size: 24px;
   text-align: center;
-  text-transform: uppercase;
-  margin: 20px 0;
+  background-color: #000;
+  padding: 20px 0;
+  margin-top: 0;
+  box-shadow: 0 0 4px 1px #000;
 }
 
 div.countries {
   display: flex;
   flex-wrap: wrap;
-  margin: 10px;
+  margin: 12px 10px 10px 10px;
 }
 
-div.countries div.country {
-  flex: 0 1 calc(20% - 6px);
+div.countries input {
+  display: none;
+}
+
+div.countries label.country {
+  flex: 0 1 calc(20% - 4px);
   height: 0;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: calc(5.5% - 6px) 0;
+  padding: calc(5.5% - 4px) 0;
   border-radius: 3px;
   margin: 2px;
   position: relative;
 }
 
-div.countries div.country div.country-name {
+div.countries label.country label.close-label {
   width: 100%;
   height: 100%;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 5;
+}
+
+div.countries label.country label.close-label span {
+  width: fit-content;
+  color: #fff;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: 10px;
+  background-color: rgba(0, 0, 0, .85);
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+div.countries label.country div.country-name {
+  width: 100%;
+  height: 100%;
+  padding: 0 5px;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
@@ -42,33 +80,35 @@ div.countries div.country div.country-name {
   transition: .3s;
   top: 0;
   position: absolute;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, .85);
 }
 
-div.countries div.country div.country-name span {
+div.countries label.country div.country-name span {
   color: #fff;
   font-size: 14px;
   font-weight: bold;
   transition: .6s;
   text-align: center;
-  visibility: hidden;
-  opacity: 0;
-}
-
-div.countries div.country div.country-name span.sub {
-  font-size: 10px;
-}
-
-div.countries div.country:hover div.country-name {
-  background-color: rgba(0, 0, 0, .85);
-}
-
-div.countries div.country:hover div.country-name span {
   visibility: visible;
   opacity: 1;
 }
 
-div.countries div.country div.country-info {
-  width: calc(300% + 8px);
+div.countries label.country div.country-name span.sub {
+  font-size: 10px;
+}
+
+div.countries input.country-input:checked + label.country div.country-name {
+  background-color: transparent;
+}
+
+div.countries input.country-input:checked + label.country div.country-name span {
+  visibility: hidden;
+  opacity: 0;
+}
+
+div.countries label.country div.country-info {
+  width: calc(200% + 4px);
   height: calc(200% + 4px);
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   color: #fff;
@@ -81,89 +121,255 @@ div.countries div.country div.country-info {
   z-index: 2;
 }
 
-div.countries div.country div.country-info h2.name {
+div.countries input.country-input:checked + label.country div.country-info {
+  display: flex;
+}
+
+div.countries input.country-input:checked + label.country label.close-label {
+  display: flex;
+}
+
+div.countries label.country div.country-info div.arrow {
+  width: 0;
+  height: 0;
+  border-width: 15px;
+  border-style: solid;
+  border-color: transparent transparent #000 transparent;
+  top: -30px;
+  left: calc(25% - 15px);
+  position: absolute;
+}
+
+div.countries label.country div.country-info h2.name {
   font-size: 14px;
   text-align: center;
   margin: 10px 0;
 }
 
-div.countries div.country div.country-info div.content {
+div.countries label.country div.country-info div.content {
   width: 100%;
   height: 100%;
-  font-size: 12px;
+  font-size: 11px;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+}
+
+div.countries label.country div.country-info div.content table {
+  display: flex;
+  flex-direction: column;
+}
+
+div.countries label.country div.country-info div.content table tr {
   display: flex;
   flex-direction: row;
 }
 
-div.countries div.country div.country-info div.content div.section {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 50%;
-  padding: 5px;
+
+div.countries label.country div.country-info div.content table tr td {
+  flex: 0 0 50%;
 }
 
-div.countries div.country div.country-info div.content div.section ul {
-  font-size: 12px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+div.countries label.country div.country-info div.content table tr td:first-child {
+  font-weight: bold;
+  text-align: end;
 }
 
-div.countries div.country div.country-info div.content div.section:first-child {
-  border-width: 0 1px 0 0;
-  border-style: solid;
-  border-color: #fff;
-}
-
-
-div.countries div.country:nth-child(5n-1) div.country-info,
-div.countries div.country:nth-child(5n) div.country-info {
-  left: calc(-200% - 8px);
-}
-
-div.countries div.country:active div.country-info {
-  display: flex;
+@media screen and (min-width: 1281px) {
+  div.countries label.country:nth-of-type(5n) div.country-info {
+    left: calc(-100% - 4px);
+  }
+  
+  div.countries label.country:nth-of-type(5n) div.country-info div.arrow {
+    left: calc(75% - 15px);
+  }
+  
+  div.countries label.country:nth-last-of-type(-n+10) div.country-info {
+    top: calc(-200% - 8px);
+  }
+  
+  div.countries label.country:nth-last-of-type(-n+10) div.country-info div.arrow {
+    border-color: #000 transparent transparent transparent;
+    top: unset;
+    bottom: -30px;
+  }
 }
 
 @media screen and (max-width: 1280px) {
-  div.countries div.country {
-    flex: 0 1 calc(25% - 6px);
-    padding: calc(6.5% - 6px) 0;
-  }
 
-  div.countries div.country:nth-child(5n-1) div.country-info,
-  div.countries div.country:nth-child(5n) div.country-info {
+  div.countries label.country:not(:nth-of-type(4n)) div.country-info {
     left: 0;
   }
+  
+  div.countries label.country:not(:nth-of-type(4n)) div.country-info div.arrow  {
+    left: calc(25% - 15px)
+  }
+  
+  div.countries label.country:not(:nth-last-of-type(-n+6)) div.country-info {
+    top: calc(100% + 4px);
+  }
+  
+  div.countries label.country:not(:nth-last-of-type(-n+6)) div.country-info div.arrow {
+    border-color: transparent transparent #000 transparent;
+    top: -30px;
+    bottom: unset;
+    left: calc(25% - 15px);
+  }
 
-  div.countries div.country:nth-child(4n-1) div.country-info,
-  div.countries div.country:nth-child(4n) div.country-info {
-    left: calc(-200% - 8px);
+  /* ---- */
+  div.countries label.country {
+    flex: 0 1 calc(25% - 4px);
+    padding: calc(8% - 4px) 0;
+  }
+
+  div.countries label.country:nth-of-type(4n) div.country-info {
+    left: calc(-100% - 4px);
+  }
+  
+  div.countries label.country:nth-of-type(4n) div.country-info div.arrow {
+    left: calc(75% - 15px);
+  }
+  
+  div.countries label.country:nth-last-of-type(-n+6) div.country-info {
+    top: calc(-200% - 8px);
+  }
+  
+  div.countries label.country:nth-last-of-type(-n+6) div.country-info div.arrow {
+    border-color: #000 transparent transparent transparent;
+    top: unset;
+    bottom: -30px;
   }
 }
 
 @media screen and (max-width: 980px) {
-  div.countries div.country {
-    flex: 0 1 calc(33.3% - 6px);
-    padding: calc(8.5% - 6px) 0;
-  }
 
-  div.countries div.country:nth-child(5n-1) div.country-info,
-  div.countries div.country:nth-child(5n) div.country-info {
+  div.countries label.country:not(:nth-of-type(3n)) div.country-info {
     left: 0;
   }
-
-  div.countries div.country:nth-child(4n-1) div.country-info,
-  div.countries div.country:nth-child(4n) div.country-info {
-    left: 0;
+  
+  div.countries label.country:not(:nth-of-type(3n)) div.country-info div.arrow  {
+    left: calc(25% - 15px)
+  }
+  
+  div.countries label.country:not(:nth-last-of-type(-n+4)) div.country-info {
+    top: calc(100% + 4px);
+  }
+  
+  div.countries label.country:not(:nth-last-of-type(-n+4)) div.country-info div.arrow {
+    border-color: transparent transparent #000 transparent;
+    top: -30px;
+    bottom: unset;
+    left: calc(25% - 15px);
   }
 
-  div.countries div.country:nth-child(3n-1) div.country-info {
+  /* ---- */
+  div.countries label.country {
+    flex: 0 1 calc(33.3% - 4px);
+    padding: calc(10% - 4px) 0;
+  }
+  
+  div.countries label.country:nth-of-type(3n) div.country-info {
     left: calc(-100% - 4px);
   }
+  
+  div.countries label.country:nth-of-type(3n) div.country-info div.arrow {
+    left: calc(75% - 15px);
+  }
+  
+  div.countries label.country:nth-last-of-type(-n+4) div.country-info {
+    top: calc(-200% - 8px);
+  }
+  
+  div.countries label.country:nth-last-of-type(-n+4) div.country-info div.arrow {
+    border-color: #000 transparent transparent transparent;
+    top: unset;
+    bottom: -30px;
+  }
+}
 
-  div.countries div.country:nth-child(3n) div.country-info {
-    left: calc(-200% - 8px)
+@media screen and (max-width: 750px) {
+
+  div.countries label.country:not(:nth-of-type(2n)) div.country-info {
+    left: 0;
+  }
+  
+  div.countries label.country:not(:nth-of-type(2n)) div.country-info div.arrow  {
+    left: calc(25% - 15px)
+  }
+  
+  div.countries label.country:not(:nth-last-of-type(-n+4)) div.country-info {
+    top: calc(100% + 4px);
+  }
+  
+  div.countries label.country:not(:nth-last-of-type(-n+4)) div.country-info div.arrow {
+    border-color: transparent transparent #000 transparent;
+    top: -30px;
+    bottom: unset;
+    left: calc(25% - 15px);
+  }
+
+  /* ---- */
+  div.countries label.country {
+    flex: 0 1 calc(50% - 4px);
+    padding: calc(14% - 4px) 0;
+  }
+  
+  div.countries label.country:nth-of-type(2n) div.country-info {
+    left: calc(-100% - 4px);
+  }
+  
+  div.countries label.country:nth-of-type(2n) div.country-info div.arrow {
+    left: calc(75% - 15px);
+  }
+  
+  div.countries label.country:nth-last-of-type(-n+4) div.country-info {
+    top: calc(-200% - 8px);
+  }
+  
+  div.countries label.country:nth-last-of-type(-n+4) div.country-info div.arrow {
+    border-color: #000 transparent transparent transparent;
+    top: unset;
+    bottom: -30px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+
+  div.countries label.country {
+    flex: 0 1 calc(100% - 4px);
+    padding: calc(25% - 4px) 0;
+  }
+
+  div.countries label.country div.country-info {
+    width: 100%;
+    left: 0 !important;
+  }
+  
+  div.countries label.country div.country-info div.arrow  {
+    left: calc(50% - 15px) !important;
+  }
+  
+  div.countries label.country:not(:nth-last-of-type(-n+2)) div.country-info {
+    top: calc(100% + 4px);
+  }
+  
+  div.countries label.country:not(:nth-last-of-type(-n+2)) div.country-info div.arrow {
+    border-color: transparent transparent #000 transparent;
+    top: -30px;
+    bottom: unset;
+    left: calc(25% - 15px);
+  }
+
+  /* ---- */
+  div.countries label.country:nth-last-of-type(-n+2) div.country-info {
+    top: calc(-200% - 8px);
+  }
+  
+  div.countries label.country:nth-last-of-type(-n+2) div.country-info div.arrow {
+    border-color: #000 transparent transparent transparent;
+    top: unset;
+    bottom: -30px;
   }
 }
